@@ -1,0 +1,2 @@
+A projekt célja egy olyan alkalmazás létrehozása, amely termékeladáshoz kapcsolódó dashboardot tartalmaz. 
+Az egyes füleken több diagram látható majd szűrőkkel, illetve egy külön oldalon az alapadatok nagy része is megjelenik majd azok kedvéért, akik hozzászoktak az Excelhez és szeretnék táblázatos formában látni az adatokat. Ezt a táblázatot formázott Excelbe is ki lehet majd exportálni.
