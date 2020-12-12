@@ -30,7 +30,7 @@ namespace IRF_beadandó_F9bobl
         private void InitializeComponent()
         {
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.ctComboBox = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.cityComboBox = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -42,78 +42,86 @@ namespace IRF_beadandó_F9bobl
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(615, 24);
+            this.textBox3.Location = new System.Drawing.Point(495, 22);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(202, 22);
             this.textBox3.TabIndex = 16;
-            this.textBox3.Text = "Szűrő1";
+            this.textBox3.Text = "Customer type";
             // 
-            // comboBox3
+            // ctComboBox
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(615, 52);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(202, 24);
-            this.comboBox3.TabIndex = 15;
+            this.ctComboBox.FormattingEnabled = true;
+            this.ctComboBox.Items.AddRange(new object[] {
+            "All",
+            "Normal",
+            "Member"});
+            this.ctComboBox.Location = new System.Drawing.Point(495, 50);
+            this.ctComboBox.Name = "ctComboBox";
+            this.ctComboBox.Size = new System.Drawing.Size(202, 24);
+            this.ctComboBox.TabIndex = 15;
+            this.ctComboBox.SelectedIndexChanged += new System.EventHandler(this.ctComboBox_SelectedIndexChanged);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(384, 24);
+            this.textBox2.Location = new System.Drawing.Point(264, 22);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(202, 22);
             this.textBox2.TabIndex = 14;
-            this.textBox2.Text = "Város";
+            this.textBox2.Text = "City";
             // 
             // cityComboBox
             // 
             this.cityComboBox.FormattingEnabled = true;
             this.cityComboBox.Items.AddRange(new object[] {
-            "Mind",
+            "All",
             "Yangon",
             "Naypyitaw",
             "Mandalay"});
-            this.cityComboBox.Location = new System.Drawing.Point(384, 52);
+            this.cityComboBox.Location = new System.Drawing.Point(264, 50);
             this.cityComboBox.Name = "cityComboBox";
             this.cityComboBox.Size = new System.Drawing.Size(202, 24);
             this.cityComboBox.TabIndex = 13;
+            this.cityComboBox.SelectedIndexChanged += new System.EventHandler(this.cityComboBox_SelectedIndexChanged);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(141, 24);
+            this.textBox1.Location = new System.Drawing.Point(21, 22);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(202, 22);
             this.textBox1.TabIndex = 12;
-            this.textBox1.Text = "Nem";
+            this.textBox1.Text = "Gender";
             // 
             // genderComboBox
             // 
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Items.AddRange(new object[] {
-            "Mind",
+            "All",
             "Male",
             "Female"});
-            this.genderComboBox.Location = new System.Drawing.Point(141, 52);
+            this.genderComboBox.Location = new System.Drawing.Point(21, 50);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(202, 24);
             this.genderComboBox.TabIndex = 11;
+            this.genderComboBox.SelectedIndexChanged += new System.EventHandler(this.genderComboBox_SelectedIndexChanged);
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(1013, 110);
+            this.btnExport.Location = new System.Drawing.Point(1013, 71);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(139, 35);
             this.btnExport.TabIndex = 18;
-            this.btnExport.Text = "Exportálás Excelbe";
+            this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(21, 168);
+            this.dataGridView1.Location = new System.Drawing.Point(21, 112);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1131, 502);
+            this.dataGridView1.Size = new System.Drawing.Size(1131, 558);
             this.dataGridView1.TabIndex = 17;
             // 
             // Lap3
@@ -123,7 +131,7 @@ namespace IRF_beadandó_F9bobl
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.ctComboBox);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.cityComboBox);
             this.Controls.Add(this.textBox1);
@@ -139,7 +147,7 @@ namespace IRF_beadandó_F9bobl
         #endregion
 
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox ctComboBox;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ComboBox cityComboBox;
         private System.Windows.Forms.TextBox textBox1;
