@@ -21,6 +21,7 @@ namespace IRF_beadandó_F9bobl
         private void button1_Click(object sender, EventArgs e)
         {
             Lap1 uc = new Lap1();
+            uc.Dock = DockStyle.Fill;
 
             panel1.Controls.Clear();
             panel1.Controls.Add(uc);
@@ -33,7 +34,7 @@ namespace IRF_beadandó_F9bobl
         private void button2_Click(object sender, EventArgs e)
         {
             Lap2 uc = new Lap2();
-
+            //uc.Dock = DockStyle.Fill;
             panel1.Controls.Clear();
             panel1.Controls.Add(uc);
         }
@@ -41,6 +42,7 @@ namespace IRF_beadandó_F9bobl
         private void button3_Click(object sender, EventArgs e)
         {
             Lap3 uc = new Lap3();
+            uc.Dock = DockStyle.Fill;
 
             panel1.Controls.Clear();
             panel1.Controls.Add(uc);

@@ -17,35 +17,58 @@ namespace IRF_beadandó_F9bobl
         {
             InitializeComponent();
 
-            Adatbetöltés();
+            LoadData();
         }
 
-        private void Adatbetöltés()
+        private void LoadData()
         {
-            var ps = (from x in context.MainTable
-                      group x by new { x.ProductLines.Name, x.City } into g
-                      select new
-                      {
-                          ProductLine = g.Key.Name,
-                          City = g.Key.City,
-                          Quantity = (from x in g select x.Quantity).Sum()
 
-                      });
-            dataGridView1.DataSource = ps.ToList();
-
-
+            //chart1
             var adat = (from x in context.MainTable
-                        group x by new { x.ProductLines.Name, x.Month } into g
+                        group x by new { x.ProductLines.Name } into g
                         select new
                         {
                             ProductLine = g.Key.Name,
-                            Month = g.Key.Month,
-                            Quantity = (from x in g select x.Quantity).Sum()
+                            Total = (from x in g select x.Quantity).Average()
 
-                        });
+                        }) ;
+            chart1BindingSource.DataSource = adat.ToList();
+            chart1.DataSource = chart1BindingSource;
+            chart1.DataBind();
 
-            dataGridView2.DataSource = adat.ToList();
+            var adat2 = (from x in context.MainTable
+                         group x by new { x.City } into g //, x.ProductLines.Name
+                         select new
+                         {
+                             //ProductLine = g.Key.Name,
+                             City = g.Key.City,
+                             Total = (from x in g select x.Quantity).Sum()
+
+                         });
+            chart2BindingSource.DataSource = adat2.ToList();
+            chart2.DataSource = chart2BindingSource;
+            chart2.DataBind();
+
+
+
+            //chart3
+            var adat3 = (from x in context.MainTable
+                         group x by new { x.Month } into g
+                         select new
+                         {
+                             //productline - ez szintén key volt  
+                             Month = g.Key.Month,
+                             Total = (from x in g select x.Quantity).Sum() //nem lehet, hogy avg kéne?
+
+                         });
+            chart3BindingSource.DataSource = adat3.ToList();
+            chart3.DataSource = chart3BindingSource;
+            chart3.DataBind();
+
+
 
         }
+
     }
 }
+
