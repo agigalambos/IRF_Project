@@ -11,6 +11,8 @@ namespace IRF_beadandó_F9bobl
         public string gender { get; set; }
         public string city { get; set; }
         public string type { get; set; }
+        public string customerType { get; set; }
+        public string payment { get; set; }
 
     }
 }

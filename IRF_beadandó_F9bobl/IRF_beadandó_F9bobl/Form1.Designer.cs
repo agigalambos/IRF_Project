@@ -39,12 +39,12 @@ namespace IRF_beadandó_F9bobl
             // 
             this.panel1.Location = new System.Drawing.Point(13, 11);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1177, 545);
+            this.panel1.Size = new System.Drawing.Size(1385, 722);
             this.panel1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 562);
+            this.button1.Location = new System.Drawing.Point(13, 739);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(176, 46);
             this.button1.TabIndex = 0;
@@ -54,7 +54,7 @@ namespace IRF_beadandó_F9bobl
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(208, 562);
+            this.button2.Location = new System.Drawing.Point(208, 739);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(176, 46);
             this.button2.TabIndex = 1;
@@ -64,7 +64,7 @@ namespace IRF_beadandó_F9bobl
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1014, 562);
+            this.button3.Location = new System.Drawing.Point(1222, 739);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(176, 46);
             this.button3.TabIndex = 2;
@@ -76,7 +76,7 @@ namespace IRF_beadandó_F9bobl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1202, 620);
+            this.ClientSize = new System.Drawing.Size(1410, 797);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
