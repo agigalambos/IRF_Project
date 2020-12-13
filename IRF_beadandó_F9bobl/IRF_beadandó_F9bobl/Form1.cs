@@ -24,6 +24,10 @@ namespace IRF_beadandó_F9bobl
 
             panel1.Controls.Clear();
             panel1.Controls.Add(uc);
+
+            //Form2 f2 = new Form2();
+            //this.Hide();
+            //f2.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)

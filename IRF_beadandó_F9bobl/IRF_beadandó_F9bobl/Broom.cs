@@ -28,6 +28,7 @@ namespace IRF_beadandó_F9bobl
         {
             Image imageFile = Image.FromFile("Images/broom.png");
             g.DrawImage(imageFile, new Rectangle(0, 0, Width, Height));
+            
 
         }
 

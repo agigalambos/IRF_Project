@@ -40,6 +40,7 @@ namespace IRF_beadandó_F9bobl
         {
             genderComboBox.Text = "";
             cityComboBox.Text = "";
+            ctComboBox.Text = "";
             AdatBetöltés();
         }
 
