@@ -13,7 +13,7 @@ namespace IRF_beadandó_F9bobl
         public Broom()
         {
             AutoSize = false;
-            Width = 50;
+            Width = 40;
             Height = Width;
             Paint += Broom_Paint;
         }

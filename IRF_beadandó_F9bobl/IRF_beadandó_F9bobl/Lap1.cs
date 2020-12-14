@@ -22,14 +22,15 @@ namespace IRF_beadandó_F9bobl
 
             LoadData();
 
-            Line line = new Line();
-            
+            //panel1.BackColor = Color.FromArgb(161, 165, 214);
+            //panel1.Controls.Add(label4);
+            //this.BackColor=Color.FromArgb(161, 165, 214);
+            this.Dock = DockStyle.Fill;
 
             Broom broom = new Broom();
             this.Controls.Add(broom);
-            broom.Left = 700;
-            broom.Top = 25;
-
+            broom.Left = paymentComboBox.Location.X + paymentComboBox.Width+30;
+            broom.Top = label3.Location.Y;
             broom.Click += Broom_Click;
         }
 
@@ -78,7 +79,8 @@ namespace IRF_beadandó_F9bobl
             //chart3
             var adat3 = (from x in context.MainTable
                         group x by new { x.Month } into g
-                        select new
+                         orderby (from x in g select x.Date).FirstOrDefault() ascending
+                         select new
                         {
                             //productline - ez szintén key volt  
                             Month = g.Key.Month,
@@ -179,6 +181,7 @@ namespace IRF_beadandó_F9bobl
                                  fizmod.Contains(x.Payment) &&
                                  típus.Contains(x.Customer_type)
                          group x by new { x.Month } into g
+                         orderby (from x in g select x.Date).FirstOrDefault() ascending
                          select new
                          {
                              //productline - ez szintén key volt  

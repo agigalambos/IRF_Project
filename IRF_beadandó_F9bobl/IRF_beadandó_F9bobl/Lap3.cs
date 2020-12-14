@@ -27,8 +27,8 @@ namespace IRF_beadandó_F9bobl
 
             Broom broom = new Broom();
             this.Controls.Add(broom);
-            broom.Left = 700;
-            broom.Top = 25;
+            broom.Left = ctComboBox.Location.X + ctComboBox.Width + 30;
+            broom.Top = label3.Location.Y;
 
             AdatBetöltés();
 

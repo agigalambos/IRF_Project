@@ -15,11 +15,23 @@ namespace IRF_beadandó_F9bobl
         public Form1()
         {
             InitializeComponent();
+            panel2.BackColor = Color.FromArgb(255, 15, 19, 61);
+            panel2.Height = this.Height;
+
+            this.Text = "Product sales dashboard";
             
+
+            button1.BackColor = Color.FromArgb(255, 143, 147, 186);
+            button2.BackColor = Color.FromArgb(255, 143, 147, 186);
+            button3.BackColor = Color.FromArgb(255, 143, 147, 186);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            button1.BackColor = Color.FromArgb(100, 143, 147, 186);
+            button2.BackColor = Color.FromArgb(255, 143, 147, 186);
+            button3.BackColor = Color.FromArgb(255, 143, 147, 186);
             Lap1 uc = new Lap1();
             uc.Dock = DockStyle.Fill;
 
@@ -33,6 +45,10 @@ namespace IRF_beadandó_F9bobl
 
         private void button2_Click(object sender, EventArgs e)
         {
+            button1.BackColor = Color.FromArgb(255, 143, 147, 186);
+            button2.BackColor = Color.FromArgb(100, 143, 147, 186);
+            button3.BackColor = Color.FromArgb(255, 143, 147, 186);
+
             Lap2 uc = new Lap2();
             //uc.Dock = DockStyle.Fill;
             panel1.Controls.Clear();
@@ -41,6 +57,10 @@ namespace IRF_beadandó_F9bobl
 
         private void button3_Click(object sender, EventArgs e)
         {
+            button1.BackColor = Color.FromArgb(255, 143, 147, 186);
+            button2.BackColor = Color.FromArgb(255, 143, 147, 186);
+            button3.BackColor = Color.FromArgb(100, 143, 147, 186);
+
             Lap3 uc = new Lap3();
             uc.Dock = DockStyle.Fill;
 
