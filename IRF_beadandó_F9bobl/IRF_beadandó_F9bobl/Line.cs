@@ -12,7 +12,7 @@ namespace IRF_beadandó_F9bobl
     {
         public Line()
         {
-            Paint += Line_Paint;           
+            Paint += Line_Paint;
         }
 
         private void Line_Paint(object sender, PaintEventArgs e)
@@ -22,16 +22,9 @@ namespace IRF_beadandó_F9bobl
 
         private void DrawLine(Graphics g)
         {
-            
-
-            Pen pen = new Pen(Color.FromArgb(255, 255, 0, 0));
-            pen.Width = 2;
-            var x = pen.Width;
-            g.DrawLine(pen, 5,5, Width-20, 5);
-            g.DrawLine(pen, Width-20, 5, Width-20, Height-45);
-            g.DrawLine(pen, 5, 5, 5, Height-45);
-            g.DrawLine(pen, 5, Height-45, Width-20, Height-45);
+            Pen pen = new Pen(Color.FromArgb(255, 15, 19, 61));
+            pen.Width = 3;
+            g.DrawLine(pen, 0, Height, Width, Height);
         }
-
     }
 }

@@ -15,23 +15,35 @@ namespace IRF_beadandó_F9bobl
         ProductSalesEntities context = new ProductSalesEntities();
 
         Szűrő szűrő = new Szűrő();
-
+        Lines line = new Lines();
         public Lap1()
         {
             InitializeComponent();
 
             LoadData();
 
-            //panel1.BackColor = Color.FromArgb(161, 165, 214);
-            //panel1.Controls.Add(label4);
-            //this.BackColor=Color.FromArgb(161, 165, 214);
-            this.Dock = DockStyle.Fill;
 
+            this.Dock = DockStyle.Fill;
+            
+
+            //seprű ikon beállítása
             Broom broom = new Broom();
-            this.Controls.Add(broom);
+            panel1.Controls.Add(broom);
             broom.Left = paymentComboBox.Location.X + paymentComboBox.Width+30;
             broom.Top = label3.Location.Y;
             broom.Click += Broom_Click;
+
+            //panel keret
+            line.Width = this.Width+100;
+            line.Height = panel1.Height+20;
+
+            panel1.Controls.Add(line);
+
+
+            ////szűrők alatti vonal beállítása
+            //line.Width = this.Width+195;
+            //line.Height = genderComboBox.Top + 40;
+            //this.Controls.Add(line);
         }
 
         private void Broom_Click(object sender, EventArgs e)
@@ -41,10 +53,6 @@ namespace IRF_beadandó_F9bobl
             paymentComboBox.Text = "";
             LoadData();
         }
-
-        
-
-        ProductSale ps = new ProductSale();
 
         private void LoadData()
         {
@@ -194,7 +202,6 @@ namespace IRF_beadandó_F9bobl
             chart3.DataBind();
 
         }
-
 
         private void genderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -16,6 +16,8 @@ namespace IRF_beadandó_F9bobl
     {
         ProductSalesEntities context = new ProductSalesEntities();
         Szűrő szűrő = new Szűrő();
+        Lines line = new Lines();
+
 
         Excel.Application xlApp; 
         Excel.Workbook xlWB; 
@@ -25,14 +27,26 @@ namespace IRF_beadandó_F9bobl
         {
             InitializeComponent();
 
+            LoadData();
+
+            //seprű ikon
             Broom broom = new Broom();
-            this.Controls.Add(broom);
+            panel1.Controls.Add(broom);
             broom.Left = ctComboBox.Location.X + ctComboBox.Width + 30;
             broom.Top = label3.Location.Y;
-
-            AdatBetöltés();
-
             broom.Click += Broom_Click;
+
+            //szűrők alatti vonal beállítása
+            //line.Width = this.Width + 195;
+            //line.Height = genderComboBox.Top + 40;
+            //this.Controls.Add(line);
+
+
+            //panel keret
+            line.Width = this.Width + 100;
+            line.Height = panel1.Height + 20;
+
+            panel1.Controls.Add(line);
 
         }
 
@@ -41,10 +55,10 @@ namespace IRF_beadandó_F9bobl
             genderComboBox.Text = "";
             cityComboBox.Text = "";
             ctComboBox.Text = "";
-            AdatBetöltés();
+            LoadData();
         }
 
-        private void AdatBetöltés()
+        private void LoadData()
         {
             var adatok = (from x in context.MainTable
                           select new
@@ -63,7 +77,7 @@ namespace IRF_beadandó_F9bobl
             dataGridView1.DataSource = adatok.ToList();
         }
 
-        private void AdatFrissítés()
+        private void RefreshData()
         {
             string[] nemek = new string[genderComboBox.Items.Count];
 
@@ -128,15 +142,7 @@ namespace IRF_beadandó_F9bobl
             dataGridView1.DataSource = adatok.ToList();
         }
 
-        private void genderComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AdatFrissítés();
-        }
 
-        private void cityComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AdatFrissítés();
-        }
 
 
         private void CreateExcel()
@@ -246,9 +252,19 @@ namespace IRF_beadandó_F9bobl
             CreateExcel();
         }
 
+        private void genderComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void cityComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
         private void ctComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AdatFrissítés();
+            RefreshData();
         }
     }
 }

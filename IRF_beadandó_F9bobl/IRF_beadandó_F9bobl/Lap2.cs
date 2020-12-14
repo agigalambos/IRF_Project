@@ -14,20 +14,24 @@ namespace IRF_beadandó_F9bobl
     {
         ProductSalesEntities context = new ProductSalesEntities();
         Szűrő szűrő = new Szűrő();
+        Lines line = new Lines();
 
         public Lap2()
         {
             InitializeComponent();
 
+            //keret
+            line.Width = this.Width + 100;
+            line.Height = panel1.Height + 20;
+            panel1.Controls.Add(line);
 
+            //seprű ikon
             Broom broom = new Broom();
-            this.Controls.Add(broom);
-            broom.Left = 700;
-            broom.Top = 25;
+            panel1.Controls.Add(broom);
             broom.Left = paymentComboBox.Location.X + paymentComboBox.Width + 30;
             broom.Top = label3.Location.Y;
-
             broom.Click += Broom_Click;
+
             LoadData();
         }
 
@@ -78,9 +82,9 @@ namespace IRF_beadandó_F9bobl
                          {
                              //productline - ez szintén key volt  
                              Month = g.Key.Month,
-                             Total = (from x in g select x.Quantity).Sum() //nem lehet, hogy avg kéne?
+                             Total = (from x in g select x.Quantity).Average()
 
-                         });
+                         }) ;
             chart3BindingSource.DataSource = adat3.ToList();
             chart3.DataSource = chart3BindingSource;
             chart3.DataBind();
@@ -181,7 +185,7 @@ namespace IRF_beadandó_F9bobl
                                  //productline - ez szintén key volt  
                                  Month = g.Key.Month,
                                  Date = (from x in g select x.Date).FirstOrDefault(),
-                                 Total = (from x in g select x.Quantity).Sum()
+                                 Total = (from x in g select x.Quantity).Average()
                                  
                              } 
                              );
