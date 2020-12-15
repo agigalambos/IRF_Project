@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IRF_beadandó_F9bobl
+namespace IRF_beadandó_F9bobl.Entities
 {
-    public class ProductSale
+    public class Arány
     {
-        public string ProductLine { get; set; }
         public string City { get; set; }
-        public int Quantity { get; set; }
+        public double Rate { get; set; }
     }
 }

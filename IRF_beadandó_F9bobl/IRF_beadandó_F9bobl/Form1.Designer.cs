@@ -31,9 +31,9 @@ namespace IRF_beadandó_F9bobl
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.loadButton3 = new IRF_beadandó_F9bobl.LoadButton();
-            this.loadButton2 = new IRF_beadandó_F9bobl.LoadButton();
-            this.loadButton1 = new IRF_beadandó_F9bobl.LoadButton();
+            this.loadButton3 = new IRF_beadandó_F9bobl.Entities.LoadButton();
+            this.loadButton2 = new IRF_beadandó_F9bobl.Entities.LoadButton();
+            this.loadButton1 = new IRF_beadandó_F9bobl.Entities.LoadButton();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +44,7 @@ namespace IRF_beadandó_F9bobl
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Location = new System.Drawing.Point(193, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1703, 878);
+            this.panel1.Size = new System.Drawing.Size(1700, 878);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -103,7 +103,9 @@ namespace IRF_beadandó_F9bobl
             this.ClientSize = new System.Drawing.Size(1900, 878);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1918, 925);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1918, 925);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -114,9 +116,9 @@ namespace IRF_beadandó_F9bobl
 
         #endregion
         public System.Windows.Forms.Panel panel2;
-        private LoadButton loadButton3;
-        private LoadButton loadButton2;
-        private LoadButton loadButton1;
+        private Entities.LoadButton loadButton3;
+        private Entities.LoadButton loadButton2;
+        private Entities.LoadButton loadButton1;
         public System.Windows.Forms.Panel panel1;
     }
 }

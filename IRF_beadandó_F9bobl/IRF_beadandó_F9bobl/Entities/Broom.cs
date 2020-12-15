@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace IRF_beadandó_F9bobl
+namespace IRF_beadandó_F9bobl.Entities
 {
     public class Broom : Button
     {

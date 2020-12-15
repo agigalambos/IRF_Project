@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IRF_beadandó_F9bobl
+namespace IRF_beadandó_F9bobl.Entities
 {
     public class Szűrő
     {
         public string gender { get; set; }
         public string city { get; set; }
         public string type { get; set; }
-        public string customerType { get; set; }
         public string payment { get; set; }
 
     }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using IRF_beadandó_F9bobl.Entities;
 
 namespace IRF_beadandó_F9bobl
 {
@@ -16,6 +17,7 @@ namespace IRF_beadandó_F9bobl
 
         Szűrő szűrő = new Szűrő();
         Lines line = new Lines();
+        
         public Lap1()
         {
             InitializeComponent();
@@ -33,8 +35,8 @@ namespace IRF_beadandó_F9bobl
 
 
             //panel keret
-            line.Width = this.Width+23;
-            line.Height = panel1.Height+40;
+            line.Width = this.Width+2;//+23;
+            line.Height = panel1.Height;//+40;
 
             panel1.Controls.Add(line);
         }
@@ -46,33 +48,38 @@ namespace IRF_beadandó_F9bobl
             paymentComboBox.Text = "";
             LoadData();
         }
-
+        Arány arány = new Arány();
         private void LoadData()
         {
             //chart1
             var adat = (from x in context.MainTable
                          group x by new { x.ProductLines.Name } into g
-                         select new
+                        orderby (from x in g select x.Total).Sum() ascending
+                        select new
                          {
                              ProductLine = g.Key.Name,
-                             Quantity = (from x in g select x.Quantity).Sum()
+                             Quantity = (from x in g select x.Total).Sum()
 
                          });
             chart1BindingSource.DataSource = adat.ToList();
             chart1.DataSource = chart1BindingSource;
             chart1.DataBind();
 
-            var adat2 = (from x in context.MainTable
-                        group x by new { x.City } into g //, x.ProductLines.Name
-                        select new
-                        {
-                            //ProductLine = g.Key.Name,
-                            City = g.Key.City,
-                            Quantity = (from x in g select x.Quantity).Sum()
+            
 
+            var arány = (from x in context.MainTable
+                        group x by new { x.City } into g 
+                        select new Arány
+                        {
+                            City = g.Key.City,
+                            Rate =(double)((from x in g select x.Total).Sum()/
+                                   (double)(from y in context.MainTable
+                                    select y.Total).Sum().Value)*100,
+                           
                         });
-            chart2BindingSource.DataSource = adat2.ToList();
-            chart2.DataSource = chart2BindingSource;
+
+            arányBindingSource1.DataSource = arány.ToList();
+            chart2.DataSource = arányBindingSource1;
             chart2.DataBind();
 
             chart2.PaletteCustomColors = new Color[] {Color.FromArgb(255,41, 117, 60),
@@ -85,9 +92,9 @@ namespace IRF_beadandó_F9bobl
                          orderby (from x in g select x.Date).FirstOrDefault() ascending
                          select new
                         {
-                            //productline - ez szintén key volt  
+                            
                             Month = g.Key.Month,
-                            Quantity = (from x in g select x.Quantity).Sum()
+                            Quantity = (from x in g select x.Total).Sum()
 
                         });
             chart3BindingSource.DataSource = adat3.ToList();
@@ -151,10 +158,11 @@ namespace IRF_beadandó_F9bobl
                                fizmod.Contains(x.Payment) &&
                                típus.Contains(x.Customer_type)
                         group x by new { x.ProductLines.Name } into g
+                        orderby (from x in g select x.Total).Sum() ascending
                         select new
                         {
                             ProductLine = g.Key.Name,
-                            Quantity = (from x in g select x.Quantity).Sum()
+                            Quantity = (from x in g select x.Total).Sum()
 
                         });
             chart1BindingSource.DataSource = adat.ToList();
@@ -163,20 +171,26 @@ namespace IRF_beadandó_F9bobl
 
             //chart2
 
-            var adat2 = (from x in context.MainTable
+
+            var arány = (from x in context.MainTable
                          where nemek.Contains(x.Gender) &&
                                  fizmod.Contains(x.Payment) &&
                                  típus.Contains(x.Customer_type)
-                         group x by new { x.City } into g //, x.ProductLines.Name
-                         select new
+                         group x by new { x.City } into g
+                         select new Arány
                          {
-                             //ProductLine = g.Key.Name,
                              City = g.Key.City,
-                             Quantity = (from x in g select x.Quantity).Sum()
+                             Rate = (double)((from x in g select x.Total).Sum() /
+                                    (double)(from y in context.MainTable
+                                             where nemek.Contains(y.Gender) &&
+                                                     fizmod.Contains(y.Payment) &&
+                                                        típus.Contains(y.Customer_type)
+                                             select y.Total).Sum().Value) * 100,
 
                          });
-            chart2BindingSource.DataSource = adat2.ToList();
-            chart2.DataSource = chart2BindingSource;
+
+            arányBindingSource1.DataSource = arány.ToList();
+            chart2.DataSource = arányBindingSource1;
             chart2.DataBind();
 
             //chart3
@@ -187,10 +201,9 @@ namespace IRF_beadandó_F9bobl
                          group x by new { x.Month } into g
                          orderby (from x in g select x.Date).FirstOrDefault() ascending
                          select new
-                         {
-                             //productline - ez szintén key volt  
+                         { 
                              Month = g.Key.Month,
-                             Quantity = (from x in g select x.Quantity).Sum()
+                             Quantity = (from x in g select x.Total).Sum()
 
                          });
             chart3BindingSource.DataSource = adat3.ToList();

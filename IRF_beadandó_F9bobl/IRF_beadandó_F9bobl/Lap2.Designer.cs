@@ -53,15 +53,15 @@ namespace IRF_beadandó_F9bobl
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chart1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.chart2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.chart3BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.chart2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // chart3
@@ -215,6 +215,7 @@ namespace IRF_beadandó_F9bobl
             series3.IsValueShownAsLabel = true;
             series3.IsVisibleInLegend = false;
             series3.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            series3.LabelForeColor = System.Drawing.Color.White;
             series3.LabelFormat = "0.00";
             series3.Legend = "Legend1";
             series3.Name = "Series1";
@@ -290,8 +291,8 @@ namespace IRF_beadandó_F9bobl
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2BindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -305,11 +306,11 @@ namespace IRF_beadandó_F9bobl
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.BindingSource chart1BindingSource;
-        private System.Windows.Forms.BindingSource chart2BindingSource;
         private System.Windows.Forms.BindingSource chart3BindingSource;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.BindingSource chart2BindingSource;
     }
 }

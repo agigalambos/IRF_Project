@@ -54,15 +54,15 @@ namespace IRF_beadandó_F9bobl
             this.ctComboBox = new System.Windows.Forms.ComboBox();
             this.genderComboBox = new System.Windows.Forms.ComboBox();
             this.chart1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.chart2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.chart3BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.arányBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.arányBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // chart1
@@ -88,6 +88,7 @@ namespace IRF_beadandó_F9bobl
             series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             series1.IsValueShownAsLabel = true;
             series1.IsVisibleInLegend = false;
+            series1.LabelFormat = "0.00";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             series1.XValueMember = "ProductLine";
@@ -113,6 +114,7 @@ namespace IRF_beadandó_F9bobl
             chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
             chartArea2.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea2);
+            this.chart2.DataSource = this.arányBindingSource1;
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
             this.chart2.Location = new System.Drawing.Point(680, 91);
@@ -124,10 +126,11 @@ namespace IRF_beadandó_F9bobl
             series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             series2.IsValueShownAsLabel = true;
             series2.LabelForeColor = System.Drawing.Color.White;
+            series2.LabelFormat = "0.00\"%\"";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             series2.XValueMember = "City";
-            series2.YValueMembers = "Quantity";
+            series2.YValueMembers = "Rate";
             this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(640, 335);
             this.chart2.TabIndex = 8;
@@ -162,6 +165,7 @@ namespace IRF_beadandó_F9bobl
             series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(117)))), ((int)(((byte)(60)))));
             series3.IsValueShownAsLabel = true;
             series3.IsVisibleInLegend = false;
+            series3.LabelFormat = "0.00";
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             series3.Points.Add(dataPoint1);
@@ -266,6 +270,10 @@ namespace IRF_beadandó_F9bobl
             this.genderComboBox.TabIndex = 13;
             this.genderComboBox.SelectedIndexChanged += new System.EventHandler(this.genderComboBox_SelectedIndexChanged);
             // 
+            // arányBindingSource1
+            // 
+            this.arányBindingSource1.DataSource = typeof(IRF_beadandó_F9bobl.Entities.Arány);
+            // 
             // Lap1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -282,8 +290,8 @@ namespace IRF_beadandó_F9bobl
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.arányBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -293,7 +301,6 @@ namespace IRF_beadandó_F9bobl
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
         private System.Windows.Forms.BindingSource chart1BindingSource;
-        private System.Windows.Forms.BindingSource chart2BindingSource;
         private System.Windows.Forms.BindingSource chart3BindingSource;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
@@ -302,5 +309,6 @@ namespace IRF_beadandó_F9bobl
         private System.Windows.Forms.ComboBox paymentComboBox;
         private System.Windows.Forms.ComboBox ctComboBox;
         private System.Windows.Forms.ComboBox genderComboBox;
+        private System.Windows.Forms.BindingSource arányBindingSource1;
     }
 }

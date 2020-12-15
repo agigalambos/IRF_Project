@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
+using IRF_beadandó_F9bobl.Entities;
 
 namespace IRF_beadandó_F9bobl
 {
@@ -30,6 +31,8 @@ namespace IRF_beadandó_F9bobl
             LoadData();
 
             panel1.BackColor = Color.FromArgb(100, 91, 128, 99);
+            btnExport.BackColor = Color.FromArgb(255, 91, 128, 99);
+
 
             //seprű ikon
             Broom broom = new Broom();
@@ -39,8 +42,8 @@ namespace IRF_beadandó_F9bobl
             broom.Click += Broom_Click;
 
             //panel keret
-            line.Width = this.Width + 23;
-            line.Height = panel1.Height + 40;
+            line.Width = panel1.Width + 2;
+            line.Height = panel1.Height;
 
             panel1.Controls.Add(line);
 

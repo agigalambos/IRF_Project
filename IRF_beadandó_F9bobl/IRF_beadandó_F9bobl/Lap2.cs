@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using IRF_beadandó_F9bobl.Entities;
 
 namespace IRF_beadandó_F9bobl
 {
@@ -32,8 +33,8 @@ namespace IRF_beadandó_F9bobl
             broom.Click += Broom_Click;
 
             //keret
-            line.Width = this.Width + 23;
-            line.Height = panel1.Height+40;
+            line.Width = panel1.Width+5;
+            line.Height = panel1.Height;
             panel1.Controls.Add(line);            
         }
 
@@ -51,10 +52,11 @@ namespace IRF_beadandó_F9bobl
             //chart1
             var adat = (from x in context.MainTable
                         group x by new { x.ProductLines.Name } into g
+                        orderby (from x in g select x.Total).Average() ascending
                         select new
                         {
                             ProductLine = g.Key.Name,
-                            Total = (from x in g select x.Quantity).Average()
+                            Total = (from x in g select x.Total).Average()
 
                         }) ;
             chart1BindingSource.DataSource = adat.ToList();
@@ -62,12 +64,13 @@ namespace IRF_beadandó_F9bobl
             chart1.DataBind();
 
             var adat2 = (from x in context.MainTable
-                         group x by new { x.City } into g 
+                         group x by new { x.City } into g
+                         orderby (from x in g select x.Total).Average() ascending
                          select new
                          {
                              
                              City = g.Key.City,
-                             Total = (from x in g select x.Quantity).Average()
+                             Total = (from x in g select x.Total).Average()
 
                          });
             chart2BindingSource.DataSource = adat2.ToList();
@@ -84,7 +87,7 @@ namespace IRF_beadandó_F9bobl
                          {
                              
                              Month = g.Key.Month,
-                             Total = (from x in g select x.Quantity).Average()
+                             Total = (from x in g select x.Total).Average()
 
                          }) ;
             chart3BindingSource.DataSource = adat3.ToList();
@@ -149,7 +152,7 @@ namespace IRF_beadandó_F9bobl
                             select new
                             {
                                 ProductLine = g.Key.Name,
-                                Total = (from x in g select x.Quantity).Average()
+                                Total = (from x in g select x.Total).Average()
 
                             });
                 chart1BindingSource.DataSource = adat.ToList();
@@ -162,12 +165,12 @@ namespace IRF_beadandó_F9bobl
                              where nemek.Contains(x.Gender) &&
                                      fizmod.Contains(x.Payment) &&
                                      típus.Contains(x.Customer_type)
-                             group x by new { x.City } into g //, x.ProductLines.Name
+                             group x by new { x.City } into g 
+                             orderby (from x in g select x.Total).Average() ascending
                              select new
                              {
-                                 //ProductLine = g.Key.Name,
                                  City = g.Key.City,
-                                 Total = (from x in g select x.Quantity).Average()
+                                 Total = (from x in g select x.Total).Average()
 
                              });
                 chart2BindingSource.DataSource = adat2.ToList();
@@ -181,13 +184,12 @@ namespace IRF_beadandó_F9bobl
                                      típus.Contains(x.Customer_type)
                                      
                              group x by new { x.Month } into g
-                            // orderby (from x in g select x.Date).FirstOrDefault() ascending
+                             orderby (from x in g select x.Date).FirstOrDefault() ascending
                              select new
                              {
-                                 //productline - ez szintén key volt  
                                  Month = g.Key.Month,
                                  Date = (from x in g select x.Date).FirstOrDefault(),
-                                 Total = (from x in g select x.Quantity).Average()
+                                 Total = (from x in g select x.Total).Average()
                                  
                              } 
                              );
