@@ -33,19 +33,19 @@ namespace IRF_beadandó_F9bobl
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.chart2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.chart3BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,13 +53,16 @@ namespace IRF_beadandó_F9bobl
             this.paymentComboBox = new System.Windows.Forms.ComboBox();
             this.ctComboBox = new System.Windows.Forms.ComboBox();
             this.genderComboBox = new System.Windows.Forms.ComboBox();
+            this.chart1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.chart2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.chart3BindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3BindingSource)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // chart1
@@ -76,11 +79,12 @@ namespace IRF_beadandó_F9bobl
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(17, 126);
+            this.chart1.Location = new System.Drawing.Point(17, 91);
             this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(117)))), ((int)(((byte)(60)))));
             series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             series1.IsValueShownAsLabel = true;
             series1.IsVisibleInLegend = false;
@@ -89,9 +93,13 @@ namespace IRF_beadandó_F9bobl
             series1.XValueMember = "ProductLine";
             series1.YValueMembers = "Quantity";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(640, 300);
+            this.chart1.Size = new System.Drawing.Size(640, 335);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
+            title1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            title1.Name = "Title1";
+            title1.Text = "Total value of purchases by productline";
+            this.chart1.Titles.Add(title1);
             // 
             // chart2
             // 
@@ -107,21 +115,27 @@ namespace IRF_beadandó_F9bobl
             this.chart2.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(680, 126);
+            this.chart2.Location = new System.Drawing.Point(680, 91);
             this.chart2.Name = "chart2";
-            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(128)))), ((int)(((byte)(99)))));
             series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             series2.IsValueShownAsLabel = true;
+            series2.LabelForeColor = System.Drawing.Color.White;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             series2.XValueMember = "City";
             series2.YValueMembers = "Quantity";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(640, 300);
+            this.chart2.Size = new System.Drawing.Size(640, 335);
             this.chart2.TabIndex = 8;
             this.chart2.Text = "chart2";
+            title2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            title2.Name = "Title1";
+            title2.Text = "Total value of purchases";
+            this.chart2.Titles.Add(title2);
             // 
             // chart3
             // 
@@ -131,6 +145,7 @@ namespace IRF_beadandó_F9bobl
             chartArea3.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
             chartArea3.AxisX.Title = "Month";
             chartArea3.AxisY.IsLabelAutoFit = false;
+            chartArea3.AxisY.IsStartedFromZero = false;
             chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
             chartArea3.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
@@ -144,6 +159,7 @@ namespace IRF_beadandó_F9bobl
             this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(117)))), ((int)(((byte)(60)))));
             series3.IsValueShownAsLabel = true;
             series3.IsVisibleInLegend = false;
             series3.Legend = "Legend1";
@@ -156,6 +172,10 @@ namespace IRF_beadandó_F9bobl
             this.chart3.Size = new System.Drawing.Size(1303, 350);
             this.chart3.TabIndex = 9;
             this.chart3.Text = "chart3";
+            title3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            title3.Name = "Title1";
+            title3.Text = "Total value of purchases by month";
+            this.chart3.Titles.Add(title3);
             // 
             // panel1
             // 
@@ -168,9 +188,9 @@ namespace IRF_beadandó_F9bobl
             this.panel1.Controls.Add(this.ctComboBox);
             this.panel1.Controls.Add(this.genderComboBox);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.panel1.Location = new System.Drawing.Point(4, 3);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1333, 100);
+            this.panel1.Size = new System.Drawing.Size(1333, 70);
             this.panel1.TabIndex = 13;
             // 
             // label3
@@ -255,15 +275,15 @@ namespace IRF_beadandó_F9bobl
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.chart1);
             this.Name = "Lap1";
-            this.Size = new System.Drawing.Size(1340, 819);
+            this.Size = new System.Drawing.Size(1340, 820);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3BindingSource)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

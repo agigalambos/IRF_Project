@@ -44,13 +44,11 @@ namespace IRF_beadandó_F9bobl
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Location = new System.Drawing.Point(193, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1732, 1060);
+            this.panel1.Size = new System.Drawing.Size(1703, 878);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.Controls.Add(this.loadButton3);
             this.panel2.Controls.Add(this.loadButton2);
             this.panel2.Controls.Add(this.loadButton1);
@@ -61,47 +59,52 @@ namespace IRF_beadandó_F9bobl
             // 
             // loadButton3
             // 
-            this.loadButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(147)))), ((int)(((byte)(186)))));
+            this.loadButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(128)))), ((int)(((byte)(99)))));
             this.loadButton3.Font = new System.Drawing.Font("Arial", 10F);
-            this.loadButton3.Location = new System.Drawing.Point(0, 726);
+            this.loadButton3.ForeColor = System.Drawing.Color.White;
+            this.loadButton3.Location = new System.Drawing.Point(0, 701);
             this.loadButton3.Name = "loadButton3";
             this.loadButton3.Size = new System.Drawing.Size(195, 80);
-            this.loadButton3.TabIndex = 5;
+            this.loadButton3.TabIndex = 8;
             this.loadButton3.Text = "Spreadsheet";
             this.loadButton3.UseVisualStyleBackColor = false;
-            this.loadButton3.Click += new System.EventHandler(this.loadButton3_Click);
+            this.loadButton3.Click += new System.EventHandler(this.loadButton3_Click_1);
             // 
             // loadButton2
             // 
-            this.loadButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(147)))), ((int)(((byte)(186)))));
+            this.loadButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(128)))), ((int)(((byte)(99)))));
             this.loadButton2.Font = new System.Drawing.Font("Arial", 10F);
-            this.loadButton2.Location = new System.Drawing.Point(0, 362);
+            this.loadButton2.ForeColor = System.Drawing.Color.White;
+            this.loadButton2.Location = new System.Drawing.Point(0, 277);
             this.loadButton2.Name = "loadButton2";
             this.loadButton2.Size = new System.Drawing.Size(195, 80);
-            this.loadButton2.TabIndex = 4;
+            this.loadButton2.TabIndex = 7;
             this.loadButton2.Text = "Average value of purchases";
             this.loadButton2.UseVisualStyleBackColor = false;
-            this.loadButton2.Click += new System.EventHandler(this.loadButton2_Click);
+            this.loadButton2.Click += new System.EventHandler(this.loadButton2_Click_1);
             // 
             // loadButton1
             // 
-            this.loadButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(147)))), ((int)(((byte)(186)))));
+            this.loadButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(128)))), ((int)(((byte)(99)))));
             this.loadButton1.Font = new System.Drawing.Font("Arial", 10F);
-            this.loadButton1.Location = new System.Drawing.Point(0, 230);
+            this.loadButton1.ForeColor = System.Drawing.Color.White;
+            this.loadButton1.Location = new System.Drawing.Point(0, 144);
             this.loadButton1.Name = "loadButton1";
             this.loadButton1.Size = new System.Drawing.Size(195, 80);
-            this.loadButton1.TabIndex = 3;
+            this.loadButton1.TabIndex = 6;
             this.loadButton1.Text = "Total value of purchases";
             this.loadButton1.UseVisualStyleBackColor = false;
-            this.loadButton1.Click += new System.EventHandler(this.loadButton1_Click);
+            this.loadButton1.Click += new System.EventHandler(this.loadButton1_Click_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.ClientSize = new System.Drawing.Size(1900, 878);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.MaximumSize = new System.Drawing.Size(1918, 925);
+            this.MinimumSize = new System.Drawing.Size(1918, 925);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel2.ResumeLayout(false);
@@ -110,12 +113,11 @@ namespace IRF_beadandó_F9bobl
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Panel panel2;
         private LoadButton loadButton3;
         private LoadButton loadButton2;
         private LoadButton loadButton1;
-        public System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.Panel panel1;
     }
 }
 

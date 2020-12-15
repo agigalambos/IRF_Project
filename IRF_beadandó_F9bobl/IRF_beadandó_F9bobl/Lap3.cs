@@ -29,6 +29,8 @@ namespace IRF_beadandó_F9bobl
 
             LoadData();
 
+            panel1.BackColor = Color.FromArgb(100, 91, 128, 99);
+
             //seprű ikon
             Broom broom = new Broom();
             panel1.Controls.Add(broom);
@@ -36,15 +38,9 @@ namespace IRF_beadandó_F9bobl
             broom.Top = label3.Location.Y;
             broom.Click += Broom_Click;
 
-            //szűrők alatti vonal beállítása
-            //line.Width = this.Width + 195;
-            //line.Height = genderComboBox.Top + 40;
-            //this.Controls.Add(line);
-
-
             //panel keret
-            line.Width = this.Width + 100;
-            line.Height = panel1.Height + 20;
+            line.Width = this.Width + 23;
+            line.Height = panel1.Height + 40;
 
             panel1.Controls.Add(line);
 
@@ -63,15 +59,17 @@ namespace IRF_beadandó_F9bobl
             var adatok = (from x in context.MainTable
                           select new
                           {
+                              ID = x.Id,
                               Date = x.Date,
-                              ProductLine = x.Product_line,
-                              Gender = x.Gender,
+                              ProductLine = x.ProductLines.Name,       
                               UnitPrice = x.Unit_price,
                               x.Quantity,
                               x.Total,
-                              x.City,
-                              x.Customer_type,
                               x.Payment,
+                              x.Customer_type,
+                              Gender = x.Gender,
+                              x.City                             
+                              
                           });
 
             dataGridView1.DataSource = adatok.ToList();
@@ -127,22 +125,20 @@ namespace IRF_beadandó_F9bobl
                                 típus.Contains(x.Customer_type)
                           select new
                           {
+                              ID=x.Id,
                               Date = x.Date,
-                              ProductLine = x.Product_line,
-                              Gender = x.Gender,
+                              ProductLine = x.ProductLines.Name,
                               UnitPrice = x.Unit_price,
                               x.Quantity,
                               x.Total,
-                              x.City,
-                              x.Customer_type,
                               x.Payment,
-
+                              x.Customer_type,
+                              Gender = x.Gender,
+                              x.City                          
                           });
 
             dataGridView1.DataSource = adatok.ToList();
         }
-
-
 
 
         private void CreateExcel()
@@ -176,15 +172,17 @@ namespace IRF_beadandó_F9bobl
         private void CreateTable()
         {
             string[] headers = new string[] {
+             "ID",
              "Date",
-             "Product line",
-             "Gender",
-             "Unit Price",
+             "Productline",
+             "Unit price",
              "Quantity",
              "Total",
-             "City",
+             "Payment",
              "Customer type",
-             "Payment"
+             "Gender",
+             "City"            
+             
             };
 
             for (int i = 1; i < headers.Length + 1; i++)
@@ -198,8 +196,6 @@ namespace IRF_beadandó_F9bobl
 
             int counter = 0;
 
-
-
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
                 values[counter, 0] = dr.Cells[0].Value;
@@ -211,6 +207,7 @@ namespace IRF_beadandó_F9bobl
                 values[counter, 6] = dr.Cells[6].Value;
                 values[counter, 7] = dr.Cells[7].Value;
                 values[counter, 8] = dr.Cells[8].Value;
+                values[counter, 9] = dr.Cells[9].Value;
                 counter++;
             }
 
@@ -241,16 +238,29 @@ namespace IRF_beadandó_F9bobl
             headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
             headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
             headerRange.EntireColumn.AutoFit();
-            headerRange.RowHeight = 40;
-            headerRange.Interior.Color = Color.LightBlue;
-            headerRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+            headerRange.RowHeight = 20;
+            headerRange.Interior.Color = Color.FromArgb(255, 17, 48, 25);
+            headerRange.Font.Color = Color.White;
+            headerRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlMedium);
+
+            int lastRowID = xlSheet.UsedRange.Rows.Count;
+
+            Excel.Range tableRange = xlSheet.get_Range(GetCell(2, 1), GetCell(lastRowID, headers.Length));
+            tableRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlMedium);
+            
+
+            Excel.Range firstColumnRange = xlSheet.get_Range(GetCell(2, 1), GetCell(lastRowID, 1));
+            firstColumnRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlMedium);
+            firstColumnRange.Font.Bold = true;
+            firstColumnRange.Interior.Color = Color.FromArgb(255, 91, 128, 99);
+
+            Excel.Range TotalColumnRange = xlSheet.get_Range(GetCell(2, 6), GetCell(lastRowID, 6));
+            //lastColumnRange.Interior.Color = Color.LightGreen;
+            TotalColumnRange.NumberFormat = "#,##0.00";
 
         }
 
-        private void btnExport_Click(object sender, EventArgs e)
-        {
-            CreateExcel();
-        }
+
 
         private void genderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -265,6 +275,11 @@ namespace IRF_beadandó_F9bobl
         private void ctComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshData();
+        }
+
+        private void btnExport_Click_1(object sender, EventArgs e)
+        {
+            CreateExcel();
         }
     }
 }

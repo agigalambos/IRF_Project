@@ -15,6 +15,8 @@ namespace IRF_beadandó_F9bobl
             AutoSize = false;
             Width = 40;
             Height = Width;
+            FlatStyle = FlatStyle.Flat;
+            FlatAppearance.BorderColor = Color.FromArgb(100, 91, 128, 99);
             Paint += Broom_Paint;
         }
 

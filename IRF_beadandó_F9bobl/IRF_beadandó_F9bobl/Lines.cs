@@ -32,7 +32,7 @@ namespace IRF_beadandó_F9bobl
             //g.DrawLine(pen, 5, 5, 5, Height);
             //g.DrawLine(pen, 5, Height, Width, Height);
 
-            Pen pen = new Pen(Color.FromArgb(255, 15, 19, 61));
+            Pen pen = new Pen(Color.FromArgb(255, 41, 117, 60));
             pen.Width = 2;
             var x = pen.Width;
             g.DrawLine(pen, 1, 1, Width - 19, 1);

@@ -17,7 +17,7 @@ namespace IRF_beadandó_F9bobl
         {
             InitializeComponent();
 
-            panel2.BackColor = Color.FromArgb(255, 15, 19, 61);
+            panel2.BackColor = Color.FromArgb(255, 17, 48, 25);
             panel2.Height = this.Height;
 
             this.Text = "Product sales dashboard";
@@ -25,10 +25,11 @@ namespace IRF_beadandó_F9bobl
 
         }
 
-        private void loadButton1_Click(object sender, EventArgs e)
+
+        private void loadButton1_Click_1(object sender, EventArgs e)
         {
-            loadButton2.BackColor = Color.FromArgb(255, 143, 147, 186);
-            loadButton3.BackColor = Color.FromArgb(255, 143, 147, 186);
+            loadButton2.BackColor = Color.FromArgb(255, 91, 128, 99);
+            loadButton3.BackColor = Color.FromArgb(255, 91, 128, 99);
             Lap1 uc = new Lap1();
             uc.Dock = DockStyle.Fill;
 
@@ -36,10 +37,10 @@ namespace IRF_beadandó_F9bobl
             panel1.Controls.Add(uc);
         }
 
-        private void loadButton2_Click(object sender, EventArgs e)
+        private void loadButton2_Click_1(object sender, EventArgs e)
         {
-            loadButton1.BackColor = Color.FromArgb(255, 143, 147, 186);
-            loadButton3.BackColor = Color.FromArgb(255, 143, 147, 186);
+            loadButton1.BackColor = Color.FromArgb(255, 91, 128, 99);
+            loadButton3.BackColor = Color.FromArgb(255, 91, 128, 99);
 
             Lap2 uc = new Lap2();
             //uc.Dock = DockStyle.Fill;
@@ -47,11 +48,11 @@ namespace IRF_beadandó_F9bobl
             panel1.Controls.Add(uc);
         }
 
-        private void loadButton3_Click(object sender, EventArgs e)
+        private void loadButton3_Click_1(object sender, EventArgs e)
         {
-            loadButton1.BackColor = Color.FromArgb(255, 143, 147, 186);
-            loadButton2.BackColor = Color.FromArgb(255, 143, 147, 186);
-            
+            loadButton1.BackColor = Color.FromArgb(255, 91, 128, 99);
+            loadButton2.BackColor = Color.FromArgb(255, 91, 128, 99);
+
 
             Lap3 uc = new Lap3();
             uc.Dock = DockStyle.Fill;

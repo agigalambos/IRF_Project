@@ -19,11 +19,10 @@ namespace IRF_beadandó_F9bobl
         public Lap2()
         {
             InitializeComponent();
+            
+            LoadData();
 
-            //keret
-            line.Width = this.Width + 100;
-            line.Height = panel1.Height + 20;
-            panel1.Controls.Add(line);
+            panel1.BackColor = Color.FromArgb(100, 91, 128, 99);
 
             //seprű ikon
             Broom broom = new Broom();
@@ -32,7 +31,10 @@ namespace IRF_beadandó_F9bobl
             broom.Top = label3.Location.Y;
             broom.Click += Broom_Click;
 
-            LoadData();
+            //keret
+            line.Width = this.Width + 23;
+            line.Height = panel1.Height+40;
+            panel1.Controls.Add(line);            
         }
 
         private void Broom_Click(object sender, EventArgs e)
@@ -60,12 +62,12 @@ namespace IRF_beadandó_F9bobl
             chart1.DataBind();
 
             var adat2 = (from x in context.MainTable
-                         group x by new { x.City } into g //, x.ProductLines.Name
+                         group x by new { x.City } into g 
                          select new
                          {
-                             //ProductLine = g.Key.Name,
+                             
                              City = g.Key.City,
-                             Total = (from x in g select x.Quantity).Sum()
+                             Total = (from x in g select x.Quantity).Average()
 
                          });
             chart2BindingSource.DataSource = adat2.ToList();
@@ -80,7 +82,7 @@ namespace IRF_beadandó_F9bobl
                          orderby (from x in g select x.Date).FirstOrDefault() ascending
                          select new
                          {
-                             //productline - ez szintén key volt  
+                             
                              Month = g.Key.Month,
                              Total = (from x in g select x.Quantity).Average()
 
@@ -165,7 +167,7 @@ namespace IRF_beadandó_F9bobl
                              {
                                  //ProductLine = g.Key.Name,
                                  City = g.Key.City,
-                                 Total = (from x in g select x.Quantity).Sum()
+                                 Total = (from x in g select x.Quantity).Average()
 
                              });
                 chart2BindingSource.DataSource = adat2.ToList();

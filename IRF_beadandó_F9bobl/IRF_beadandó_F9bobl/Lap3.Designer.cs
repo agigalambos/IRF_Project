@@ -29,6 +29,7 @@ namespace IRF_beadandó_F9bobl
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ctComboBox = new System.Windows.Forms.ComboBox();
             this.cityComboBox = new System.Windows.Forms.ComboBox();
             this.genderComboBox = new System.Windows.Forms.ComboBox();
@@ -44,7 +45,7 @@ namespace IRF_beadandó_F9bobl
             // 
             // ctComboBox
             // 
-            this.ctComboBox.Font = new System.Drawing.Font("Microsoft PhagsPa", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ctComboBox.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctComboBox.FormattingEnabled = true;
             this.ctComboBox.Items.AddRange(new object[] {
             "All",
@@ -58,7 +59,7 @@ namespace IRF_beadandó_F9bobl
             // 
             // cityComboBox
             // 
-            this.cityComboBox.Font = new System.Drawing.Font("Microsoft PhagsPa", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cityComboBox.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cityComboBox.FormattingEnabled = true;
             this.cityComboBox.Items.AddRange(new object[] {
             "All",
@@ -73,7 +74,7 @@ namespace IRF_beadandó_F9bobl
             // 
             // genderComboBox
             // 
-            this.genderComboBox.Font = new System.Drawing.Font("Microsoft PhagsPa", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.genderComboBox.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Items.AddRange(new object[] {
             "All",
@@ -88,17 +89,25 @@ namespace IRF_beadandó_F9bobl
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(21, 112);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.Location = new System.Drawing.Point(17, 93);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1261, 632);
+            this.dataGridView1.Size = new System.Drawing.Size(1312, 665);
             this.dataGridView1.TabIndex = 17;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft PhagsPa", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(486, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 19);
@@ -108,7 +117,7 @@ namespace IRF_beadandó_F9bobl
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft PhagsPa", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(249, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 19);
@@ -118,7 +127,7 @@ namespace IRF_beadandó_F9bobl
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft PhagsPa", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(18, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 19);
@@ -133,19 +142,20 @@ namespace IRF_beadandó_F9bobl
             this.panel1.Controls.Add(this.ctComboBox);
             this.panel1.Controls.Add(this.cityComboBox);
             this.panel1.Controls.Add(this.genderComboBox);
-            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1299, 100);
+            this.panel1.Size = new System.Drawing.Size(1333, 70);
             this.panel1.TabIndex = 22;
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(1113, 750);
+            this.btnExport.Location = new System.Drawing.Point(1160, 764);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(169, 41);
             this.btnExport.TabIndex = 23;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click_1);
             // 
             // Lap3
             // 
@@ -155,7 +165,7 @@ namespace IRF_beadandó_F9bobl
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Lap3";
-            this.Size = new System.Drawing.Size(1303, 804);
+            this.Size = new System.Drawing.Size(1340, 820);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

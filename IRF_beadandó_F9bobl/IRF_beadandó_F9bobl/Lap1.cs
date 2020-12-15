@@ -22,9 +22,7 @@ namespace IRF_beadandó_F9bobl
 
             LoadData();
 
-
-            this.Dock = DockStyle.Fill;
-            
+            panel1.BackColor = Color.FromArgb(100, 91, 128, 99);
 
             //seprű ikon beállítása
             Broom broom = new Broom();
@@ -33,17 +31,12 @@ namespace IRF_beadandó_F9bobl
             broom.Top = label3.Location.Y;
             broom.Click += Broom_Click;
 
+
             //panel keret
-            line.Width = this.Width+100;
-            line.Height = panel1.Height+20;
+            line.Width = this.Width+23;
+            line.Height = panel1.Height+40;
 
             panel1.Controls.Add(line);
-
-
-            ////szűrők alatti vonal beállítása
-            //line.Width = this.Width+195;
-            //line.Height = genderComboBox.Top + 40;
-            //this.Controls.Add(line);
         }
 
         private void Broom_Click(object sender, EventArgs e)
@@ -82,8 +75,10 @@ namespace IRF_beadandó_F9bobl
             chart2.DataSource = chart2BindingSource;
             chart2.DataBind();
 
-
-
+            chart2.PaletteCustomColors = new Color[] {Color.FromArgb(255,41, 117, 60),
+                                                      Color.FromArgb(255,95, 115, 100),
+                                                      Color.FromArgb(255, 17, 48, 25),
+                                                     };
             //chart3
             var adat3 = (from x in context.MainTable
                         group x by new { x.Month } into g
@@ -103,6 +98,7 @@ namespace IRF_beadandó_F9bobl
 
         }
 
+        
 
 
         private void RefreshData()
