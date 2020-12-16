@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IRF_beadandó_F9bobl.Entities
 {
-    public class Szűrő
+    public class Filter
     {
         public string gender { get; set; }
         public string city { get; set; }

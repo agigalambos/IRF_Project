@@ -16,7 +16,7 @@ namespace IRF_beadandó_F9bobl
     public partial class Lap3 : UserControl
     {
         ProductSalesEntities context = new ProductSalesEntities();
-        Szűrő szűrő = new Szűrő();
+        Filter filter = new Filter();
         Lines line = new Lines();
 
 
@@ -33,22 +33,28 @@ namespace IRF_beadandó_F9bobl
             panel1.BackColor = Color.FromArgb(100, 91, 128, 99);
             btnExport.BackColor = Color.FromArgb(255, 91, 128, 99);
 
+            AddBroom();
+            CreateFrame();
+        }
 
-            //seprű ikon
+
+        private void CreateFrame()
+        {
+            //panel keret
+            line.Width = this.Width + 2;
+            line.Height = panel1.Height;
+            panel1.Controls.Add(line);
+        }
+
+        private void AddBroom()
+        {   
+            //seprű gomb beállítása
             Broom broom = new Broom();
             panel1.Controls.Add(broom);
             broom.Left = ctComboBox.Location.X + ctComboBox.Width + 30;
             broom.Top = label3.Location.Y;
             broom.Click += Broom_Click;
-
-            //panel keret
-            line.Width = panel1.Width + 2;
-            line.Height = panel1.Height;
-
-            panel1.Controls.Add(line);
-
         }
-
         private void Broom_Click(object sender, EventArgs e)
         {
             genderComboBox.Text = "";
@@ -59,7 +65,7 @@ namespace IRF_beadandó_F9bobl
 
         private void LoadData()
         {
-            var adatok = (from x in context.MainTable
+            var data = (from x in context.MainTable
                           select new
                           {
                               ID = x.Id,
@@ -75,57 +81,56 @@ namespace IRF_beadandó_F9bobl
                               
                           });
 
-            dataGridView1.DataSource = adatok.ToList();
+            dataGridView1.DataSource = data.ToList();
         }
 
         private void RefreshData()
         {
-            string[] nemek = new string[genderComboBox.Items.Count];
+
+            string[] genders = new string[genderComboBox.Items.Count];
 
             for (int i = 0; i < genderComboBox.Items.Count; i++)
             {
-                nemek[i] = genderComboBox.Items[i].ToString();
+                genders[i] = genderComboBox.Items[i].ToString();
             }
 
-            string[] városok = new string[cityComboBox.Items.Count];
+            string[] cities = new string[cityComboBox.Items.Count];
 
             for (int i = 0; i < cityComboBox.Items.Count; i++)
             {
-                városok[i] = cityComboBox.Items[i].ToString();
+                cities[i] = cityComboBox.Items[i].ToString();
             }
 
-            string[] típus = new string[ctComboBox.Items.Count];
+            string[] types = new string[ctComboBox.Items.Count];
 
             for (int i = 0; i < ctComboBox.Items.Count; i++)
             {
-                típus[i] = ctComboBox.Items[i].ToString();
+                types[i] = ctComboBox.Items[i].ToString();
             }
-
-            //var nem = genderComboBox.SelectedItem;
 
             if (genderComboBox.SelectedItem != null && genderComboBox.SelectedItem != "All")
             {
-                szűrő.gender = genderComboBox.SelectedItem.ToString();
-                nemek = nemek.Where(val => val == szűrő.gender.ToString()).ToArray();
+                filter.gender = genderComboBox.SelectedItem.ToString();
+                genders = genders.Where(val => val == filter.gender.ToString()).ToArray();
             }
 
             if (cityComboBox.SelectedItem != null && cityComboBox.SelectedItem != "All")
             {
-                szűrő.city = cityComboBox.SelectedItem.ToString();
-                városok = városok.Where(val => val == szűrő.city.ToString()).ToArray();
+                filter.city = cityComboBox.SelectedItem.ToString();
+                cities = cities.Where(val => val == filter.city.ToString()).ToArray();
             }
 
             if (ctComboBox.SelectedItem != null && ctComboBox.SelectedItem != "All")
             {
-                szűrő.type = ctComboBox.SelectedItem.ToString();
-                típus = típus.Where(val => val == szűrő.type.ToString()).ToArray();
+                filter.type = ctComboBox.SelectedItem.ToString();
+                types = types.Where(val => val == filter.type.ToString()).ToArray();
             }
 
-            var adatok = (from x in context.MainTable
+            var data = (from x in context.MainTable
                               //if (nem != null)
-                          where nemek.Contains(x.Gender) &&
-                                városok.Contains(x.City) &&
-                                típus.Contains(x.Customer_type)
+                          where genders.Contains(x.Gender) &&
+                                cities.Contains(x.City) &&
+                                types.Contains(x.Customer_type)
                           select new
                           {
                               ID=x.Id,
@@ -140,7 +145,7 @@ namespace IRF_beadandó_F9bobl
                               x.City                          
                           });
 
-            dataGridView1.DataSource = adatok.ToList();
+            dataGridView1.DataSource = data.ToList();
         }
 
 
@@ -152,18 +157,18 @@ namespace IRF_beadandó_F9bobl
                 xlWB = xlApp.Workbooks.Add(Missing.Value);
                 xlSheet = xlWB.ActiveSheet;
 
-                // Tábla létrehozása
-                CreateTable(); // Ennek megírása a következő feladatrészben következik
+                
+                CreateTable();
 
                 xlApp.Visible = true;
                 xlApp.UserControl = true;
             }
-            catch (Exception ex) // Hibakezelés a beépített hibaüzenettel
+            catch (Exception ex)
             {
                 string errMsg = string.Format("Error: {0}\nLine: {1}", ex.Message, ex.Source);
                 MessageBox.Show(errMsg, "Error");
 
-                // Hiba esetén az Excel applikáció bezárása automatikusan
+                
                 xlWB.Close(false, Type.Missing, Type.Missing);
                 xlApp.Quit();
                 xlWB = null;
@@ -214,7 +219,7 @@ namespace IRF_beadandó_F9bobl
                 counter++;
             }
 
-            string GetCell(int x, int y) //private string
+            string GetCell(int x, int y) 
             {
                 string ExcelCoordinate = "";
                 int dividend = y;
@@ -258,7 +263,6 @@ namespace IRF_beadandó_F9bobl
             firstColumnRange.Interior.Color = Color.FromArgb(255, 91, 128, 99);
 
             Excel.Range TotalColumnRange = xlSheet.get_Range(GetCell(2, 6), GetCell(lastRowID, 6));
-            //lastColumnRange.Interior.Color = Color.LightGreen;
             TotalColumnRange.NumberFormat = "#,##0.00";
 
         }

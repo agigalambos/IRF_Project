@@ -14,29 +14,40 @@ namespace IRF_beadandó_F9bobl
     public partial class Lap2 : UserControl
     {
         ProductSalesEntities context = new ProductSalesEntities();
-        Szűrő szűrő = new Szűrő();
+        Filter filter = new Filter();
         Lines line = new Lines();
 
         public Lap2()
         {
             InitializeComponent();
-            
+
             LoadData();
-
             panel1.BackColor = Color.FromArgb(100, 91, 128, 99);
+            AddBroom();
+            CreateFrame();
 
-            //seprű ikon
+        }
+
+
+        private void CreateFrame()
+        {
+            //panel keret
+            line.Width = this.Width + 2;
+            line.Height = panel1.Height;
+            panel1.Controls.Add(line);
+        }
+
+        private void AddBroom()
+        {
+            //seprű gomb beállítása
             Broom broom = new Broom();
             panel1.Controls.Add(broom);
             broom.Left = paymentComboBox.Location.X + paymentComboBox.Width + 30;
             broom.Top = label3.Location.Y;
             broom.Click += Broom_Click;
-
-            //keret
-            line.Width = panel1.Width+5;
-            line.Height = panel1.Height;
-            panel1.Controls.Add(line);            
         }
+
+
 
         private void Broom_Click(object sender, EventArgs e)
         {
@@ -50,7 +61,7 @@ namespace IRF_beadandó_F9bobl
         {
 
             //chart1
-            var adat = (from x in context.MainTable
+            var data = (from x in context.MainTable
                         group x by new { x.ProductLines.Name } into g
                         orderby (from x in g select x.Total).Average() ascending
                         select new
@@ -58,39 +69,39 @@ namespace IRF_beadandó_F9bobl
                             ProductLine = g.Key.Name,
                             Total = (from x in g select x.Total).Average()
 
-                        }) ;
-            chart1BindingSource.DataSource = adat.ToList();
+                        });
+            chart1BindingSource.DataSource = data.ToList();
             chart1.DataSource = chart1BindingSource;
             chart1.DataBind();
 
-            var adat2 = (from x in context.MainTable
+            var data2 = (from x in context.MainTable
                          group x by new { x.City } into g
                          orderby (from x in g select x.Total).Average() ascending
                          select new
                          {
-                             
+
                              City = g.Key.City,
                              Total = (from x in g select x.Total).Average()
 
                          });
-            chart2BindingSource.DataSource = adat2.ToList();
+            chart2BindingSource.DataSource = data2.ToList();
             chart2.DataSource = chart2BindingSource;
             chart2.DataBind();
 
 
 
             //chart3
-            var adat3 = (from x in context.MainTable
+            var data3 = (from x in context.MainTable
                          group x by new { x.Month } into g
                          orderby (from x in g select x.Date).FirstOrDefault() ascending
                          select new
                          {
-                             
+
                              Month = g.Key.Month,
                              Total = (from x in g select x.Total).Average()
 
-                         }) ;
-            chart3BindingSource.DataSource = adat3.ToList();
+                         });
+            chart3BindingSource.DataSource = data3.ToList();
             chart3.DataSource = chart3BindingSource;
             chart3.DataBind();
 
@@ -100,104 +111,104 @@ namespace IRF_beadandó_F9bobl
 
         private void RefreshData()
         {
-            
-                //összes
 
-                string[] nemek = new string[genderComboBox.Items.Count];
+            //összes
 
-                for (int i = 0; i < genderComboBox.Items.Count; i++)
-                {
-                    nemek[i] = genderComboBox.Items[i].ToString();
-                }
+            string[] genders = new string[genderComboBox.Items.Count];
 
-                string[] fizmod = new string[paymentComboBox.Items.Count];
+            for (int i = 0; i < genderComboBox.Items.Count; i++)
+            {
+                genders[i] = genderComboBox.Items[i].ToString();
+            }
 
-                for (int i = 0; i < paymentComboBox.Items.Count; i++)
-                {
-                    fizmod[i] = paymentComboBox.Items[i].ToString();
-                }
+            string[] payments = new string[paymentComboBox.Items.Count];
 
-                string[] típus = new string[ctComboBox.Items.Count];
+            for (int i = 0; i < paymentComboBox.Items.Count; i++)
+            {
+                payments[i] = paymentComboBox.Items[i].ToString();
+            }
 
-                for (int i = 0; i < ctComboBox.Items.Count; i++)
-                {
-                    típus[i] = ctComboBox.Items[i].ToString();
-                }
+            string[] types = new string[ctComboBox.Items.Count];
 
-                if (genderComboBox.SelectedItem != null && genderComboBox.SelectedItem != "All")
-                {
-                    szűrő.gender = genderComboBox.SelectedItem.ToString();
-                    nemek = nemek.Where(val => val == szűrő.gender.ToString()).ToArray();
-                }
+            for (int i = 0; i < ctComboBox.Items.Count; i++)
+            {
+                types[i] = ctComboBox.Items[i].ToString();
+            }
 
-                if (paymentComboBox.SelectedItem != null && paymentComboBox.SelectedItem != "All")
-                {
-                    szűrő.city = paymentComboBox.SelectedItem.ToString();
-                    fizmod = fizmod.Where(val => val == szűrő.city.ToString()).ToArray();
-                }
+            if (genderComboBox.SelectedItem != null && genderComboBox.SelectedItem != "All")
+            {
+                filter.gender = genderComboBox.SelectedItem.ToString();
+                genders = genders.Where(val => val == filter.gender.ToString()).ToArray();
+            }
 
-                if (ctComboBox.SelectedItem != null && ctComboBox.SelectedItem != "All")
-                {
-                    szűrő.type = ctComboBox.SelectedItem.ToString();
-                    típus = típus.Where(val => val == szűrő.type.ToString()).ToArray();
-                }
+            if (paymentComboBox.SelectedItem != null && paymentComboBox.SelectedItem != "All")
+            {
+                filter.city = paymentComboBox.SelectedItem.ToString();
+                payments = payments.Where(val => val == filter.city.ToString()).ToArray();
+            }
 
-                //chart1
+            if (ctComboBox.SelectedItem != null && ctComboBox.SelectedItem != "All")
+            {
+                filter.type = ctComboBox.SelectedItem.ToString();
+                types = types.Where(val => val == filter.type.ToString()).ToArray();
+            }
 
-                var adat = (from x in context.MainTable
-                            where nemek.Contains(x.Gender) &&
-                                   fizmod.Contains(x.Payment) &&
-                                   típus.Contains(x.Customer_type)
-                            group x by new { x.ProductLines.Name } into g
-                            select new
-                            {
-                                ProductLine = g.Key.Name,
-                                Total = (from x in g select x.Total).Average()
+            //chart1
 
-                            });
-                chart1BindingSource.DataSource = adat.ToList();
-                chart1.DataSource = chart1BindingSource;
-                chart1.DataBind();
+            var adat = (from x in context.MainTable
+                        where genders.Contains(x.Gender) &&
+                               payments.Contains(x.Payment) &&
+                               types.Contains(x.Customer_type)
+                        group x by new { x.ProductLines.Name } into g
+                        select new
+                        {
+                            ProductLine = g.Key.Name,
+                            Total = (from x in g select x.Total).Average()
 
-                //chart2
+                        });
+            chart1BindingSource.DataSource = adat.ToList();
+            chart1.DataSource = chart1BindingSource;
+            chart1.DataBind();
 
-                var adat2 = (from x in context.MainTable
-                             where nemek.Contains(x.Gender) &&
-                                     fizmod.Contains(x.Payment) &&
-                                     típus.Contains(x.Customer_type)
-                             group x by new { x.City } into g 
-                             orderby (from x in g select x.Total).Average() ascending
-                             select new
-                             {
-                                 City = g.Key.City,
-                                 Total = (from x in g select x.Total).Average()
+            //chart2
 
-                             });
-                chart2BindingSource.DataSource = adat2.ToList();
-                chart2.DataSource = chart2BindingSource;
-                chart2.DataBind();
+            var adat2 = (from x in context.MainTable
+                         where genders.Contains(x.Gender) &&
+                                 payments.Contains(x.Payment) &&
+                                 types.Contains(x.Customer_type)
+                         group x by new { x.City } into g
+                         orderby (from x in g select x.Total).Average() ascending
+                         select new
+                         {
+                             City = g.Key.City,
+                             Total = (from x in g select x.Total).Average()
 
-                //chart3
-                var adat3 = (from x in context.MainTable
-                             where nemek.Contains(x.Gender) &&
-                                     fizmod.Contains(x.Payment) &&
-                                     típus.Contains(x.Customer_type)
-                                     
-                             group x by new { x.Month } into g
-                             orderby (from x in g select x.Date).FirstOrDefault() ascending
-                             select new
-                             {
-                                 Month = g.Key.Month,
-                                 Date = (from x in g select x.Date).FirstOrDefault(),
-                                 Total = (from x in g select x.Total).Average()
-                                 
-                             } 
-                             );
-                chart3BindingSource.DataSource = adat3.ToList();
-                chart3.DataSource = chart3BindingSource;
-                chart3.DataBind();
+                         });
+            chart2BindingSource.DataSource = adat2.ToList();
+            chart2.DataSource = chart2BindingSource;
+            chart2.DataBind();
 
-            
+            //chart3
+            var adat3 = (from x in context.MainTable
+                         where genders.Contains(x.Gender) &&
+                                 payments.Contains(x.Payment) &&
+                                 types.Contains(x.Customer_type)
+
+                         group x by new { x.Month } into g
+                         orderby (from x in g select x.Date).FirstOrDefault() ascending
+                         select new
+                         {
+                             Month = g.Key.Month,
+                             Date = (from x in g select x.Date).FirstOrDefault(),
+                             Total = (from x in g select x.Total).Average()
+
+                         }
+                         );
+            chart3BindingSource.DataSource = adat3.ToList();
+            chart3.DataSource = chart3BindingSource;
+            chart3.DataBind();
+
+
         }
 
         private void genderComboBox_SelectedIndexChanged(object sender, EventArgs e)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IRF_beadandó_F9bobl.Entities
 {
-    public class Arány
+    public class Rates
     {
         public string City { get; set; }
         public double Rate { get; set; }
