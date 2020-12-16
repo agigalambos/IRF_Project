@@ -137,7 +137,7 @@ namespace IRF_beadandó_F9bobl
             this.chart2.Text = "chart2";
             title2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             title2.Name = "Title1";
-            title2.Text = "Total value of purchases";
+            title2.Text = "Total value distribution of purchases by city";
             this.chart2.Titles.Add(title2);
             // 
             // chart3
