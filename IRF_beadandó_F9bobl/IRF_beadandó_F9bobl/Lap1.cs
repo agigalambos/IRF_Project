@@ -56,7 +56,7 @@ namespace IRF_beadandó_F9bobl
             paymentComboBox.Text = "";
             LoadData();
         }
-        Rates rate = new Rates();
+        
         private void LoadData()
         {
             //chart1

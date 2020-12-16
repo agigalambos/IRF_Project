@@ -23,7 +23,7 @@ namespace IRF_beadandó_F9bobl.Entities
         private void DrawLine(Graphics g)
         {
             
-            Pen pen = new Pen(Color.FromArgb(255, 41, 117, 60)); //width-19,height-41
+            Pen pen = new Pen(Color.FromArgb(255, 41, 117, 60)); 
             pen.Width = 2;
             
             g.DrawLine(pen, 1, 1, Width-1, 1);
