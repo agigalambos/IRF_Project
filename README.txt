@@ -1,2 +1,2 @@
-A projekt célja egy olyan alkalmazás létrehozása, amely termékeladáshoz kapcsolódó dashboardot tartalmaz. 
-Az egyes füleken több diagram látható majd szűrőkkel, illetve egy külön oldalon az alapadatok nagy része is megjelenik majd azok kedvéért, akik hozzászoktak az Excelhez és szeretnék táblázatos formában látni az adatokat. Ezt a táblázatot formázott Excelbe is ki lehet majd exportálni.
+A fejlesztést a dev ágon oldottam meg. 
+A projekt célja egy olyan dashboard elkészítése, amely termékeladásokhoz kapcsoló adatok vizális megjelenítését valósítja meg. Három oldala van, az első kettőn 3-3 diagram látható, az ábrázolt adatokat szűrni lehet. A harmadik oldalon egy datagridview található, ami segítség azoknak, akik hozzászoktak az Excelhez és szeretik az adatokat táblázatosan látni. Ezeket az adatokat lehet Excelbe exportálni. 
